@@ -1,4 +1,4 @@
-# miraseudeka
+# mineudeka
 
 A new Flutter project.
 
