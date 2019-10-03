@@ -1,5 +1,5 @@
-name: miraseudeka
-description: A new Flutter project.
+name: mineudeka
+description: Tugas Besar Eudeka OSG05 Kelompok 6.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -27,6 +27,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flare_flutter: ^1.5.9
 
 
 # For information on the generic Dart part of this file, see the
@@ -44,6 +45,9 @@ flutter:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
+  assets:
+      - assets/splash.flr
+      - assets/slice.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -70,3 +74,13 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Nunito
+      fonts :
+        - asset : assets/fonts/Nunito-Regular.ttf
+        - asset : assets/fonts/Nunito-Italic.ttf
+          style : italic
+        - asset : assets/fonts/Nunito-Bold.ttf
+          weight : 700
+        - asset : assets/fonts/Nunito-Black.ttf
+          weight : 900
