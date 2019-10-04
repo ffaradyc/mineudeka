@@ -126,7 +126,7 @@ class IngredientsList extends StatelessWidget {
                 fontSize: 8.0,
                 color: Colors.white,
               ),
-              textAlign: TextAlign.justify,
+              textAlign: TextAlign.center,
             ),
           ],
         ),

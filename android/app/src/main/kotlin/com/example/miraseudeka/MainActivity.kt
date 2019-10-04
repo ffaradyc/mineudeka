@@ -1,4 +1,4 @@
-package com.example.miraseudeka
+package com.example.mineudeka
 
 import android.os.Bundle
 
