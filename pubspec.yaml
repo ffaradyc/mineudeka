@@ -21,8 +21,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/splash.flr
-    - assets/slice.png
+    - assets/
 
   fonts:
     - family: Nunito
