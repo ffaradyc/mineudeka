@@ -1,60 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:mineudeka/main/android.dart';
+import 'package:mineudeka/main/about.dart';
 
-class Ingredients extends StatelessWidget {
+class Ingredients extends StatefulWidget {
   const Ingredients({Key key}) : super(key: key);
+
+  @override
+  _IngredientsState createState() => _IngredientsState();
+}
+
+class _IngredientsState extends State<Ingredients> {
+  int _currentIndex = 0;
+
+  // ignore: missing_return, non_constant_identifier_names
+  Widget CallPage(int currentIndex){
+    switch(currentIndex){
+      case 0: return Home();
+      case 1: return Android();
+      case 2: return About();
+      break;
+      default: return Home();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Image(
-            image: AssetImage('assets/slice.png'),
-            fit: BoxFit.fill,
-          ),
-          SizedBox(
-            height: 30.0,
-          ),
-          Container(
-            height: 200.0,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: <Widget>[
-                IngredientsList(),
-                IngredientsList(),
-                IngredientsList(),
-                IngredientsList(),
-                IngredientsList(),
-                IngredientsList(),
-                IngredientsList(),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          Center(
-            child: Text(
-              'Mineudeka!',
-              style: TextStyle(
-                fontFamily: 'Nunito',
-                fontSize: 36.0,
-                fontWeight: FontWeight.w900,
-                color: Color(0xff710099),
-                shadows: [
-                  Shadow(
-                    blurRadius: 5.0,
-                    color: Color(0x55AB01E2),
-                    offset: Offset(0, 4.0),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
+      body: CallPage(_currentIndex),
       bottomNavigationBar: SizedBox(
         height: 48.0,
         child: BottomNavigationBar(
@@ -63,18 +36,26 @@ class Ingredients extends StatelessWidget {
           selectedFontSize: 12,
           unselectedFontSize: 12,
           backgroundColor: Colors.purple,
+          currentIndex: _currentIndex,
+          onTap: (value){
+            _currentIndex = value;
+            setState(() {
+            });
+          },
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white30,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.home, color: Colors.white),
-              title: Text('Home', style: TextStyle(color: Colors.white)),
+              icon: Icon(Icons.home),
+              title: Text('Home'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.android, color: Colors.white70),
-              title: Text('Home', style: TextStyle(color: Colors.white70)),
+              icon: Icon(Icons.android),
+              title: Text('Android'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.photo, color: Colors.white70),
-              title: Text('Home', style: TextStyle(color: Colors.white70)),
+              icon: Icon(Icons.person_pin),
+              title: Text('About'),
             ),
           ],
         ),
@@ -82,6 +63,61 @@ class Ingredients extends StatelessWidget {
     );
   }
 }
+
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Image(
+          image: AssetImage('assets/slice.png'),
+          fit: BoxFit.fill,
+        ),
+        SizedBox(
+          height: 30.0,
+        ),
+        Container(
+          height: 200.0,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              IngredientsList(),
+              IngredientsList(),
+              IngredientsList(),
+              IngredientsList(),
+              IngredientsList(),
+              IngredientsList(),
+              IngredientsList(),
+            ],
+          ),
+        ),
+        SizedBox(
+          height: 20.0,
+        ),
+        Center(
+          child: Text(
+            'Mineudeka!',
+            style: TextStyle(
+              fontFamily: 'Nunito',
+              fontSize: 36.0,
+              fontWeight: FontWeight.w900,
+              color: Color(0xff710099),
+              shadows: [
+                Shadow(
+                  blurRadius: 5.0,
+                  color: Color(0x55AB01E2),
+                  offset: Offset(0, 4.0),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 
 class IngredientsList extends StatelessWidget {
   const IngredientsList({Key key}) : super(key: key);
