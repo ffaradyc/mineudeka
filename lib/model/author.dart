@@ -19,7 +19,7 @@ final authorList = [
       "All the impossible is possible for those who believe!"),
   Author(
       name: "Funny Farady Coastera",
-      photos: 'https://avatars0.githubusercontent.com/u/24467531?s=400&v=4',
+      photos: 'https://lh3.googleusercontent.com/89WOZLVxFtgFDnljWPXCtioyvK1BaPBhL9QTFCPCgvMtwKVumCwd-JaBBndw2pW_VSFT1vE4EI2p6q7Jlp-je-7pe6vz8l0xuhx5HoLExROybRpExYCfaxfilgxHZgAwi9M8kzcQeWA=w635-h904-no',
       about:
       "Be yourself; cause everybody is taken."),
 ];

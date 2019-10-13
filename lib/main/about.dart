@@ -7,7 +7,6 @@ final colorList = [
   Colors.pinkAccent.shade100
 ];
 
-
 class About extends StatefulWidget {
   @override
   _AboutState createState() => _AboutState();
@@ -84,39 +83,47 @@ class _AboutState extends State<About> {
               opacity: value,
               child: Container(
                 padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      authorList[index].name,
-                      style: TextStyle(
-                          fontSize: 24.0, fontWeight: FontWeight.w600, color: Colors.grey[200]),
-                    ),
-                    SizedBox(height: 20.0),
-                    Text(
-                      authorList[index].about,
-                      style: TextStyle(fontSize: 14.0, color: Colors.grey[200]),
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    Container(
-                      width: 80.0,
-                      height: 3.0,
-                      color: Colors.grey[200],
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    FlatButton.icon(
-                      onPressed: (){},
-                      label: Text(
-                        "See Details",
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        authorList[index].name,
                         style: TextStyle(
-                            fontSize: 18.0, fontWeight: FontWeight.w900, color: Colors.grey[200]),
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey[200]),
                       ),
-                      icon: Icon( Icons.arrow_forward_ios, color: Colors.grey[200] ),
-                    ),
-                  ],
+                      SizedBox(height: 20.0),
+                      Text(
+                        authorList[index].about,
+                        style:
+                            TextStyle(fontSize: 14.0, color: Colors.grey[200]),
+                      ),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      Container(
+                        width: 80.0,
+                        height: 3.0,
+                        color: Colors.grey[200],
+                      ),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      FlatButton.icon(
+                        onPressed: () {},
+                        label: Text(
+                          "See Details",
+                          style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.grey[200]),
+                        ),
+                        icon: Icon(Icons.arrow_forward_ios,
+                            color: Colors.grey[200]),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -149,8 +156,8 @@ class _AboutState extends State<About> {
                 margin: const EdgeInsets.only(
                     left: 20.0, right: 10.0, bottom: 10.0),
                 height:
-                Curves.easeIn.transform(index == 0 ? value : value * 0.5) *
-                    1000,
+                    Curves.easeIn.transform(index == 0 ? value : value * 0.5) *
+                        1000,
                 child: child,
               ));
         }
