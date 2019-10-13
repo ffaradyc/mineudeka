@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mineudeka/detail/detail.dart';
 
@@ -20,11 +21,21 @@ class ListCocktails extends StatelessWidget {
           Stack(
             children: <Widget>[
               Image(
-                image: AssetImage('assets/slice.png'),
-                fit: BoxFit.fill,
+                image: AssetImage('assets/top.png'),
               ),
               Positioned.fill(
                 top: 40.0,
+                child: Center(
+                  child: CachedNetworkImage(
+                    imageUrl:
+                        'https://www.thecocktaildb.com/images/ingredients/$strIngredient-medium.png',
+                    height: 240.0,
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
+              ),
+              /* Positioned.fill(
+                top: 10.0,
                 child: Center(
                   child: Text(
                     'Mineudeka!',
@@ -44,7 +55,7 @@ class ListCocktails extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
+              ), */
               AppBar(
                 backgroundColor: Color(0x22A701E2),
                 title: Text('$strIngredient'),
@@ -78,13 +89,16 @@ class _ListCocktailsWidgetState extends State<ListCocktailsWidget> {
   _ListCocktailsWidgetState(this.strIngredient);
 
   String strIngredient;
+
   Future<ListCocktailsData> _getCocktailsList() async {
+    String url =
+        'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=$strIngredient';
     http.Response response = await http.get(
-        'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=$strIngredient');
-    print(response.statusCode);
+      Uri.encodeFull(url),
+      headers: {"Accept": "application/json"},
+    );
     if (response.statusCode == 200) {
-      print(response.body);
-      return ListCocktailsDataFromJson(response.body);
+      return listCocktailsDataFromJson(response.body);
     } else {
       throw Exception('Failed to Load Data');
     }
@@ -108,6 +122,7 @@ class _ListCocktailsWidgetState extends State<ListCocktailsWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         CircularProgressIndicator(),
+                        SizedBox(height: 10.0),
                         Text("Loading"),
                       ],
                     ),
@@ -173,8 +188,11 @@ class CocktailsDataWidget extends StatelessWidget {
             ),
             child: Stack(
               children: <Widget>[
-                Image.network(
-                  drinkIngredient.strDrinkThumb,
+                CachedNetworkImage(
+                  imageUrl: drinkIngredient.strDrinkThumb.replaceFirst(RegExp(r'drink'), 'drink\/small'),
+                  placeholder: (context, url) => Center(
+                    child: CircularProgressIndicator(),
+                  ),
                   fit: BoxFit.fill,
                 ),
                 Column(

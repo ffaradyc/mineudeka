@@ -12,12 +12,15 @@ dependencies:
   
 
   cupertino_icons: ^0.1.2
+  cached_network_image: ^1.1.1
+  flare_flutter: ^1.5.9
+  http: any
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flare_flutter: ^1.5.9
-  http: any
+  
 
 flutter:
   uses-material-design: true

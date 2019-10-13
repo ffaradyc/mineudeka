@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-ListCocktailsData ListCocktailsDataFromJson(String str) => ListCocktailsData.fromJson(json.decode(str));
+ListCocktailsData listCocktailsDataFromJson(String str) => ListCocktailsData.fromJson(json.decode(str));
 
-String ListCocktailsDataToJson(ListCocktailsData data) => json.encode(data.toJson());
+String listCocktailsDataToJson(ListCocktailsData data) => json.encode(data.toJson());
 
 class ListCocktailsData {
     List<DrinkIngredient> drinks;

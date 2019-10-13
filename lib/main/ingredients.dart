@@ -3,6 +3,8 @@ import 'package:mineudeka/cocktail/list_cocktails.dart';
 import 'package:mineudeka/main/android.dart';
 import 'package:mineudeka/main/about.dart';
 
+import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:http/http.dart' as http;
 import 'dart:async';
 
@@ -80,8 +82,11 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   Future<IngredientsList> _getIngredientList() async {
-    http.Response response = await http
-        .get('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list');
+    String url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
+    http.Response response = await http.get(
+      Uri.encodeFull(url),
+      headers: {"Accept": "applicaton/json"},
+    );
     if (response.statusCode == 200) {
       return ingredientsListFromJson(response.body);
     } else {
@@ -141,6 +146,9 @@ class _HomeState extends State<Home> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           CircularProgressIndicator(),
+                          SizedBox(
+                            height: 20.0,
+                          ),
                           Text("Loading"),
                         ],
                       ),
@@ -214,8 +222,14 @@ class IngredientsListWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Expanded(
-              child: Image.network(
-                  'https://www.thecocktaildb.com/images/ingredients/$strIngredient1-small.png'),
+              child: CachedNetworkImage(
+                imageUrl:
+                    'https://www.thecocktaildb.com/images/ingredients/$strIngredient1-small.png',
+                placeholder: (context, url) => Center(
+                  child: CircularProgressIndicator(),
+                ),
+                errorWidget: (context, url, error) => new Icon(Icons.error),
+              ),
             ),
             Text(
               '$strIngredient1',
