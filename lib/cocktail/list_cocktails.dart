@@ -165,7 +165,7 @@ class CocktailsDataWidget extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (BuildContext context) {
-                return DetailPage();
+                return DetailPage(idDrink: drinkIngredient.idDrink);
               },
             ),
           );
