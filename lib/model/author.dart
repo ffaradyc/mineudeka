@@ -22,4 +22,9 @@ final authorList = [
       photos: 'https://lh3.googleusercontent.com/89WOZLVxFtgFDnljWPXCtioyvK1BaPBhL9QTFCPCgvMtwKVumCwd-JaBBndw2pW_VSFT1vE4EI2p6q7Jlp-je-7pe6vz8l0xuhx5HoLExROybRpExYCfaxfilgxHZgAwi9M8kzcQeWA=w635-h904-no',
       about:
       "Be yourself; cause everybody is taken."),
+  Author(
+      name: "Alikhsan",
+      photos: 'https://avatars3.githubusercontent.com/u/28198825?s=400&v=4',
+      about:
+      "Newbie developer growt it"),
 ];

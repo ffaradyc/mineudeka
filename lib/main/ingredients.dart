@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mineudeka/cocktail/list_cocktails.dart';
-import 'package:mineudeka/main/android.dart';
+import 'package:mineudeka/main/main_search.dart';
 import 'package:mineudeka/main/about.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -26,7 +26,7 @@ class _IngredientsState extends State<Ingredients> {
       case 0:
         return Home();
       case 1:
-        return Android();
+        return MainSearch();
       case 2:
         return About();
         break;
@@ -61,12 +61,12 @@ class _IngredientsState extends State<Ingredients> {
               title: Text('Home'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.android),
-              title: Text('Android'),
+              icon: Icon(Icons.search),
+              title: Text('Search'),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person_pin),
-              title: Text('About'),
+              title: Text('About Us'),
             ),
           ],
         ),
@@ -97,91 +97,90 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Stack(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Image(
-                image: AssetImage('assets/slice.png'),
-                fit: BoxFit.fill,
-              ),
-              Positioned.fill(
-                top: 40.0,
-                child: Center(
-                  child: Text(
-                    'Mineudeka!',
-                    style: TextStyle(
-                      fontFamily: 'Nunito',
-                      fontSize: 48.0,
-                      fontWeight: FontWeight.w900,
-                      //color: Color(0xff710099),
-                      color: Colors.white,
-                      shadows: [
-                        Shadow(
-                          blurRadius: 5.0,
-                          color: Color(0x55AB01E2),
-                          offset: Offset(0, 4.0),
+              Stack(
+                children: <Widget>[
+                  Image(
+                    image: AssetImage('assets/slice.png'),
+                    fit: BoxFit.fill,
+                  ),
+                  Positioned.fill(
+                    top: 40.0,
+                    child: Center(
+                      child: Text(
+                        'Mineudeka!',
+                        style: TextStyle(
+                          fontFamily: 'Nunito',
+                          fontSize: 48.0,
+                          fontWeight: FontWeight.w900,
+                          //color: Color(0xff710099),
+                          color: Colors.white,
+                          shadows: [
+                            Shadow(
+                              blurRadius: 5.0,
+                              color: Color(0x55AB01E2),
+                              offset: Offset(0, 4.0),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Expanded(
+                child: Container(
+                  //height: 120.0,
+                  child: FutureBuilder(
+                    future: _getIngredientList(),
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      if (snapshot.data == null) {
+                        return Container(
+                          height: double.infinity,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              CircularProgressIndicator(),
+                              SizedBox(
+                                height: 20.0,
+                              ),
+                              Text("Loading"),
+                            ],
+                          ),
+                        );
+                      }
+                      return GridView.builder(
+                        padding: EdgeInsets.all(10.0),
+                        //scrollDirection: Axis.horizontal,
+                        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                          mainAxisSpacing: 10.0,
+                          crossAxisSpacing: 10.0,
+                          maxCrossAxisExtent: 120.0,
+                        ),
+                        itemCount: snapshot.data.drinks.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          //return Padding(padding: EdgeInsets.all(5.0) ,child: Text('$snapshot.data.drinks[index].strIngredient1'),);
+                          return IngredientsListWidget(
+                            strIngredient1:
+                                snapshot.data.drinks[index].strIngredient1,
+                          );
+                        },
+                      );
+                    },
                   ),
                 ),
               ),
+              SizedBox(
+                height: 10.0,
+              ),
             ],
           ),
-          SizedBox(
-            height: 10.0,
-          ),
-          Expanded(
-            child: Container(
-              //height: 120.0,
-              child: FutureBuilder(
-                future: _getIngredientList(),
-                builder: (BuildContext context, AsyncSnapshot snapshot) {
-                  if (snapshot.data == null) {
-                    return Container(
-                      height: double.infinity,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          CircularProgressIndicator(),
-                          SizedBox(
-                            height: 20.0,
-                          ),
-                          Text("Loading"),
-                        ],
-                      ),
-                    );
-                  }
-                  return GridView.builder(
-                    padding: EdgeInsets.all(10.0),
-                    //scrollDirection: Axis.horizontal,
-                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                      mainAxisSpacing: 10.0,
-                      crossAxisSpacing: 10.0,
-                      maxCrossAxisExtent: 120.0,
-                    ),
-                    itemCount: snapshot.data.drinks.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      //return Padding(padding: EdgeInsets.all(5.0) ,child: Text('$snapshot.data.drinks[index].strIngredient1'),);
-                      return IngredientsListWidget(
-                        strIngredient1:
-                            snapshot.data.drinks[index].strIngredient1,
-                      );
-                    },
-                  );
-                },
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-        ],
-      ),
-    );
-  }
+    );}
 }
 
 class IngredientsListWidget extends StatelessWidget {
