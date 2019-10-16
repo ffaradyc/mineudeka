@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mineudeka/main/search.dart';
 import 'package:mineudeka/network/api_client.dart';
 import 'package:mineudeka/model/drinks.dart';
+import 'package:mineudeka/detail/detail.dart';
 
-class Android extends StatelessWidget {
+class MainSearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -65,12 +66,20 @@ class SearchContent extends StatelessWidget {
                   leading: Image.network(
                       drinksList.drinks[index].strDrinkThumb),
                   onTap: () {
-                    SnackBar snackbar = SnackBar(
-                      content: Text(
-                        drinksList.drinks[index].strDrink,
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) {
+                          return DetailPage(idDrink: drinksList.drinks[index].idDrink);
+                        },
                       ),
                     );
-                    Scaffold.of(context).showSnackBar(snackbar);
+//                    SnackBar snackbar = SnackBar(
+//                      content: Text(
+//                        drinksList.drinks[index].strDrink,
+//                      ),
+//                    );
+//                    Scaffold.of(context).showSnackBar(snackbar);
                   },
                 );
               },

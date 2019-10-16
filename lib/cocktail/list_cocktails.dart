@@ -58,6 +58,7 @@ class ListCocktails extends StatelessWidget {
               ), */
               AppBar(
                 backgroundColor: Color(0x22A701E2),
+                elevation: 0,
                 title: Text('$strIngredient'),
               ),
             ],

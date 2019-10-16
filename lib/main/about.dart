@@ -4,7 +4,8 @@ import 'package:mineudeka/model/author.dart';
 final colorList = [
   Colors.deepPurpleAccent.shade100,
   Colors.indigoAccent.shade100,
-  Colors.pinkAccent.shade100
+  Colors.pinkAccent.shade100,
+  Colors.deepOrangeAccent.shade100
 ];
 
 class About extends StatefulWidget {
@@ -35,33 +36,35 @@ class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          AnimatedContainer(
-            duration: Duration(milliseconds: 500),
-            color: colorList[currentPage],
-          ),
-          Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Container(
+          child: Stack(
             children: <Widget>[
-              Container(
-                height: 400.0,
-                child: PageView.builder(
-                  itemBuilder: (context, index) {
-                    return itemBuilder(index);
-                  },
-                  controller: _pageController,
-                  pageSnapping: true,
-                  onPageChanged: _onPageChanged,
-                  itemCount: 3,
-                  physics: ClampingScrollPhysics(),
-                ),
+              AnimatedContainer(
+                duration: Duration(milliseconds: 500),
+                color: colorList[currentPage],
               ),
-              _detailsBuilder(currentPage),
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    height: 400.0,
+                    child: PageView.builder(
+                      itemBuilder: (context, index) {
+                        return itemBuilder(index);
+                      },
+                      controller: _pageController,
+                      pageSnapping: true,
+                      onPageChanged: _onPageChanged,
+                      itemCount: 4,
+                      physics: ClampingScrollPhysics(),
+                    ),
+                  ),
+                  _detailsBuilder(currentPage),
+                ],
+              )
             ],
-          )
-        ],
+          ),
       ),
     );
   }

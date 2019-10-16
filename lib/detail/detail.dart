@@ -102,11 +102,12 @@ class DetailPageWidget extends StatelessWidget {
             ),
             AppBar(
               backgroundColor: Color(0x22A701E2),
+              elevation: 0,
               title: Text(
                 snapshot.data.drinks[0].strDrink,
                 style: TextStyle(
                   fontFamily: 'Nunito',
-                  color: Colors.white60,
+                  color: Colors.white,
                 ),
               ),
             ),
