@@ -14,7 +14,7 @@ final authorList = [
       "Salah satu program dari Eudeka! untuk belajar secara full online via Whatsapp dan Google Classroom, dengan para praktisi handal di bidangnya."),
   Author(
       name: "Firman Abdul Jabar",
-      photos: 'https://scontent-sin2-2.xx.fbcdn.net/v/t1.0-9/32828411_1968158346551983_3339780626797559808_n.jpg?_nc_cat=103&_nc_oc=AQmPBGlI8RUN7MFeZBZGvjKEEephREXZJxOOwNeRFRi6HQDTrWTUnsiFlRY_QbwajjU&_nc_ht=scontent-sin2-2.xx&oh=21977f294c6b2272899cd4336829b23b&oe=5E300E98',
+      photos: 'https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-9/72546330_2849978131703329_5729542684180217856_n.jpg?_nc_cat=104&_nc_oc=AQmJH_MJ8cG11PgLzBiuVAihkCtJoU83ECGMd5tZ9r3h_1gUkHHmwJy3amdcw7Q7kAU&_nc_ht=scontent-sin6-1.xx&oh=795085974b53608fe75d894aa9f31e0b&oe=5E21EDF6',
       about:
       "All the impossible is possible for those who believe!"),
   Author(
