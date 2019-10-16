@@ -1,42 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:mineudeka/main/search.dart';
 import 'package:mineudeka/network/api_client.dart';
 import 'package:mineudeka/model/drinks.dart';
 
-class Android extends StatelessWidget {
+class SearchPage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: SearchBare(),
-    );
-  }
+  _SearchPageState createState() => _SearchPageState();
 }
 
-class SearchBare extends StatelessWidget {
+class _SearchPageState extends State<SearchPage> {
+  TextEditingController editingController = TextEditingController();
+
+  bool onSearch = false;
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.purple,
-        title: Text("Find Your Drinks"),
+        title: TextField(
+          controller: editingController,
+          autofocus: true,
+          decoration: InputDecoration(
+//            enabledBorder: UnderlineInputBorder(
+//              borderSide: BorderSide(color: Colors.purple),
+//            ),
+//            focusedBorder: UnderlineInputBorder(
+//              borderSide: BorderSide(color: Colors.white),
+//            ),
+              ),
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return SearchPage();
-                  },
-                ),
-              );
+              setState(() {
+                onSearch = true;
+              });
             },
           ),
         ],
       ),
-      body: SearchContent(""),
+      body: onSearch ? SearchContent(editingController.text) : Container(),
     );
   }
 }
@@ -62,8 +69,8 @@ class SearchContent extends StatelessWidget {
                   title: Text(drinksList.drinks[index].strDrink),
                   subtitle: Text(drinksList.drinks[index].strGlass),
                   trailing: Text(drinksList.drinks[index].strCategory),
-                  leading: Image.network(
-                      drinksList.drinks[index].strDrinkThumb),
+                  leading:
+                      Image.network(drinksList.drinks[index].strDrinkThumb),
                   onTap: () {
                     SnackBar snackbar = SnackBar(
                       content: Text(
