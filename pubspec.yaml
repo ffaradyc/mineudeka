@@ -16,7 +16,6 @@ dependencies:
   flare_flutter: ^1.5.9
   http: any
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
