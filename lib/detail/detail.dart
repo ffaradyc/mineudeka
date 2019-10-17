@@ -76,9 +76,13 @@ class DetailPageWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Expanded(
-                  child: Stack(
+          child: Stack(
+            fit: StackFit.expand,
             children: <Widget>[
-              Image.asset('assets/top.png'),
+              Image.asset(
+                'assets/top.png',
+                fit: BoxFit.fill,
+              ),
               Positioned.fill(
                 top: 20.0,
                 child: Center(
@@ -143,7 +147,6 @@ class DetailPageWidget extends StatelessWidget {
                                 snapshot:
                                     snapshot.data.drinks[0].lstIngredients),
                           ),
-                          
                         ],
                       ),
                     ),
