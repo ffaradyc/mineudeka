@@ -75,43 +75,45 @@ class DetailPageWidget extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        Stack(
-          children: <Widget>[
-            Image.asset('assets/top.png'),
-            Positioned.fill(
-              top: 20.0,
-              child: Center(
-                child: Container(
-                  padding: EdgeInsets.only(
-                    left: 10.0,
-                    right: 10.0,
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20.0),
-                    child: CachedNetworkImage(
-                      imageUrl: snapshot.data.drinks[0].strDrinkThumb,
-                      placeholder: (context, url) => Center(
-                        child: CircularProgressIndicator(),
+        Expanded(
+                  child: Stack(
+            children: <Widget>[
+              Image.asset('assets/top.png'),
+              Positioned.fill(
+                top: 20.0,
+                child: Center(
+                  child: Container(
+                    padding: EdgeInsets.only(
+                      left: 10.0,
+                      right: 10.0,
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20.0),
+                      child: CachedNetworkImage(
+                        imageUrl: snapshot.data.drinks[0].strDrinkThumb,
+                        placeholder: (context, url) => Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                        errorWidget: (context, url, error) =>
+                            new Icon(Icons.error),
                       ),
-                      errorWidget: (context, url, error) =>
-                          new Icon(Icons.error),
                     ),
                   ),
                 ),
               ),
-            ),
-            AppBar(
-              backgroundColor: Color(0x22A701E2),
-              elevation: 0,
-              title: Text(
-                snapshot.data.drinks[0].strDrink,
-                style: TextStyle(
-                  fontFamily: 'Nunito',
-                  color: Colors.white,
+              AppBar(
+                backgroundColor: Color(0x002A701E2),
+                elevation: 0,
+                title: Text(
+                  snapshot.data.drinks[0].strDrink,
+                  style: TextStyle(
+                    fontFamily: 'Nunito',
+                    color: Colors.white,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         SizedBox(
           height: 20.0,
