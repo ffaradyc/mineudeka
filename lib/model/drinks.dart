@@ -10,8 +10,10 @@ class Drinks {
   Drinks({this.drinks});
 
   factory Drinks.fromJson(Map<String, dynamic> json) => Drinks(
-      drinks: List<ItemDrinks>.from(
-          json["drinks"].map((x) => ItemDrinks.fromJson(x))));
+        drinks: List<ItemDrinks>.from(
+          json["drinks"].map((x) => ItemDrinks.fromJson(x)),
+        ),
+      );
 
   Map<String, dynamic> toJson() =>
       {"drinks": List<dynamic>.from(drinks.map((x) => x.toJson()))};

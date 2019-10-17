@@ -13,59 +13,38 @@ class ListCocktails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: AppBar(backgroundColor: Color(0xffA701E2),),
-      backgroundColor: Colors.white,
+      
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Stack(
-            children: <Widget>[
-              Image(
-                image: AssetImage('assets/top.png'),
-              ),
-              Positioned.fill(
-                top: 40.0,
-                child: Center(
-                  child: CachedNetworkImage(
-                    imageUrl:
-                        'https://www.thecocktaildb.com/images/ingredients/$strIngredient-medium.png',
-                    height: 240.0,
-                    fit: BoxFit.fitWidth,
-                  ),
+          Expanded(
+            child: Stack(
+              fit: StackFit.expand,
+              children: <Widget>[
+                Image(
+                  image: AssetImage('assets/top.png'),
+                  fit: BoxFit.fill,
                 ),
-              ),
-              /* Positioned.fill(
-                top: 10.0,
-                child: Center(
-                  child: Text(
-                    'Mineudeka!',
-                    style: TextStyle(
-                      fontFamily: 'Nunito',
-                      fontSize: 48.0,
-                      fontWeight: FontWeight.w900,
-                      //color: Color(0xff710099),
-                      color: Colors.white,
-                      shadows: [
-                        Shadow(
-                          blurRadius: 5.0,
-                          color: Color(0x55AB01E2),
-                          offset: Offset(0, 4.0),
-                        ),
-                      ],
+                Positioned.fill(
+                  top: 20.0,
+                  child: Center(
+                    child: CachedNetworkImage(
+                      imageUrl:
+                          'https://www.thecocktaildb.com/images/ingredients/$strIngredient-medium.png',
+                      height: 240.0,
+                      fit: BoxFit.fill,
                     ),
                   ),
                 ),
-              ), */
-              AppBar(
-                backgroundColor: Color(0x22A701E2),
-                elevation: 0,
-                title: Text('$strIngredient'),
-              ),
-            ],
+                AppBar(
+                  backgroundColor: Color(0x002A701E2),
+                  elevation: 0,
+                  title: Text('$strIngredient'),
+                ),
+              ],
+            ),
           ),
-          SizedBox(
-            height: 10.0,
-          ),
+          
           Expanded(
             child: ListCocktailsWidget(
               strIngredient: strIngredient,
@@ -112,12 +91,13 @@ class _ListCocktailsWidgetState extends State<ListCocktailsWidget> {
       children: <Widget>[
         Expanded(
           child: Container(
-            //height: 120.0,
+            
             child: FutureBuilder(
               future: _getCocktailsList(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.data == null) {
                   return Container(
+                    
                     height: double.infinity,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -175,7 +155,7 @@ class CocktailsDataWidget extends StatelessWidget {
           elevation: 10.0,
           child: Container(
             margin: EdgeInsets.all(0),
-            padding: EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(5.0),
             alignment: Alignment.center,
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -190,7 +170,8 @@ class CocktailsDataWidget extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 CachedNetworkImage(
-                  imageUrl: drinkIngredient.strDrinkThumb.replaceFirst(RegExp(r'drink'), 'drink\/small'),
+                  imageUrl: drinkIngredient.strDrinkThumb
+                      .replaceFirst(RegExp(r'drink'), 'drink\/small'),
                   placeholder: (context, url) => Center(
                     child: CircularProgressIndicator(),
                   ),

@@ -7,6 +7,13 @@ class ApiClient {
     Response response = await get(
         "https://www.thecocktaildb.com/api/json/v1/1/search.php?" +
             searchParam);
-    return drinksFromJson(response.body);
+    if (response.statusCode == 200) {
+      if (response.body != '{"drinks":null}')
+        return drinksFromJson(response.body);
+      return Drinks(drinks: []);
+    } else {
+      throw Exception('Failed to Load Data');
+    }
+    
   }
 }

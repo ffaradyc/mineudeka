@@ -15,6 +15,7 @@ dependencies:
   cached_network_image: ^1.1.1
   flare_flutter: ^1.5.9
   http: any
+  font_awesome_flutter: any
 
 dev_dependencies:
   flutter_test:

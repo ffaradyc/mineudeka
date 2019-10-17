@@ -21,6 +21,7 @@ class _SearchPageState extends State<SearchPage> {
         title: TextField(
           controller: editingController,
           autofocus: true,
+          textInputAction: TextInputAction.go,
           decoration: InputDecoration(
 //            enabledBorder: UnderlineInputBorder(
 //              borderSide: BorderSide(color: Colors.purple),
@@ -29,6 +30,9 @@ class _SearchPageState extends State<SearchPage> {
 //              borderSide: BorderSide(color: Colors.white),
 //            ),
               ),
+          onSubmitted: (v) {            
+              onSearch = true;            
+          },
           style: TextStyle(
             color: Colors.white,
           ),
@@ -77,7 +81,8 @@ class SearchContent extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (BuildContext context) {
-                          return DetailPage(idDrink: drinksList.drinks[index].idDrink);
+                          return DetailPage(
+                              idDrink: drinksList.drinks[index].idDrink);
                         },
                       ),
                     );

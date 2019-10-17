@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
-import 'package:mineudeka/main/ingredients.dart';
+import 'package:mineudeka/main/home.dart';
+
 
 class Splash extends StatelessWidget {
   const Splash({Key key}) : super(key: key);
@@ -17,7 +18,7 @@ class Splash extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (BuildContext context) {
-                  return Ingredients();
+                  return Home();
                 },
               ),
             );
