@@ -95,6 +95,7 @@ class DetailPageWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20.0),
                       child: CachedNetworkImage(
                         imageUrl: snapshot.data.drinks[0].strDrinkThumb,
+                        fit: BoxFit.fill,
                         placeholder: (context, url) => Center(
                           child: CircularProgressIndicator(),
                         ),
