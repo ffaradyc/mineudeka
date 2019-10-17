@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mineudeka/main/loading.dart';
 import 'package:mineudeka/network/api_client.dart';
 import 'package:mineudeka/model/drinks.dart';
 import 'package:mineudeka/detail/detail.dart';
@@ -97,7 +98,7 @@ class SearchContent extends StatelessWidget {
               },
             );
           } else {
-            return CircularProgressIndicator();
+            return LoadingEudeka();
           }
         },
       ),

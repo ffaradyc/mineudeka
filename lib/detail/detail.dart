@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:mineudeka/main/loading.dart';
 
 import 'package:mineudeka/model/drinks_model.dart';
 import 'package:http/http.dart' as http;
@@ -52,7 +53,7 @@ class _DetailPageState extends State<DetailPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    CircularProgressIndicator(),
+                    LoadingEudeka(),
                     SizedBox(height: 10.0),
                     Text("Loading"),
                   ],
@@ -97,7 +98,7 @@ class DetailPageWidget extends StatelessWidget {
                         imageUrl: snapshot.data.drinks[0].strDrinkThumb,
                         fit: BoxFit.fill,
                         placeholder: (context, url) => Center(
-                          child: CircularProgressIndicator(),
+                          child: LoadingEudeka(anim: "Loading_eudeka"),
                         ),
                         errorWidget: (context, url, error) =>
                             new Icon(Icons.error),

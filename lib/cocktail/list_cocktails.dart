@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:mineudeka/detail/detail.dart';
+import 'package:mineudeka/main/loading.dart';
 
 import '../model/cocktails_list.dart';
 import 'package:http/http.dart' as http;
@@ -96,13 +97,12 @@ class _ListCocktailsWidgetState extends State<ListCocktailsWidget> {
               future: _getCocktailsList(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.data == null) {
-                  return Container(
-                    
+                  return Container(                    
                     height: double.infinity,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        CircularProgressIndicator(),
+                        LoadingEudeka(),
                         SizedBox(height: 10.0),
                         Text("Loading"),
                       ],
@@ -173,7 +173,7 @@ class CocktailsDataWidget extends StatelessWidget {
                   imageUrl: drinkIngredient.strDrinkThumb
                       .replaceFirst(RegExp(r'drink'), 'drink\/small'),
                   placeholder: (context, url) => Center(
-                    child: CircularProgressIndicator(),
+                    child: LoadingEudeka(anim: "Loading_eudeka"),
                   ),
                   fit: BoxFit.fill,
                 ),
