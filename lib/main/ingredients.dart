@@ -4,7 +4,6 @@ import 'package:mineudeka/cocktail/list_cocktails.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:mineudeka/main/loading.dart';
 import 'dart:async';
 
 import '../model/ingredients_list.dart';
@@ -82,7 +81,7 @@ class _IngredientsState extends State<Ingredients> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          LoadingEudeka(),
+                          CircularProgressIndicator(),
                           SizedBox(
                             height: 20.0,
                           ),
@@ -163,7 +162,7 @@ class IngredientsListWidget extends StatelessWidget {
                 imageUrl:
                     'https://www.thecocktaildb.com/images/ingredients/$strIngredient1-small.png',
                 placeholder: (context, url) => Center(
-                  child: LoadingEudeka(anim: "Loading_eudeka",),
+                  child: CircularProgressIndicator(),
                 ),
                 errorWidget: (context, url, error) => new Icon(Icons.error),
               ),
