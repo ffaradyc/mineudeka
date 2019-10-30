@@ -19,10 +19,18 @@ Tugas Akhir Flutter mendapatkan dan menampilkan data dari API [www.thecocktaildb
 
 ### Created By
 - [Eudeka](https://github.com/eudeka)
-- [Kelompok6](https://github.com/eudeka)
 - [ffaradyc](https://github.com/ffaradyc)
+    - Design Tampilan ( 1 Poin )
+    - Halaman Gridview Ingredient ( 2 Poin )
+    - Halaman GridView Cocktails ( 2 Poin )
+    - Halaman Detail Cocktails ( 2 Poin )
 - [firmanjabar](https://github.com/firmanjabar)
+    - Halaman BottomNavigationBar dan Route ( 2 Poin )
+    - Design Navigation ( 2 Poin )
+    - Halaman About ( 2 Poin )
 - [alikhsan778](https://github.com/alikhsan778)
+    - Halaman Pencarian ( 2 Poin )
+    - Design Data Pencarian ( 2 Poin )
 
 ---
 
