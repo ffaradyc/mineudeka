@@ -19,6 +19,8 @@ Tugas Akhir Flutter mendapatkan dan menampilkan data dari API [www.thecocktaildb
 
 ### Created By
 - [Eudeka](https://github.com/eudeka)
+- [Hedda Elfrida](https://github.com/dhahedda)
+    - Mentor ( 4 Poin )
 - [ffaradyc](https://github.com/ffaradyc)
     - Design Tampilan ( 1 Poin )
     - Halaman Gridview Ingredient ( 2 Poin )
